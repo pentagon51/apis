@@ -11,6 +11,17 @@ app.get('/api/products',(req,res)=>{
         { id: 105, name: "Smartwatch", price: 199 },
         { id: 106, name: "Bluetooth Speaker", price: 79 }
       ];
+
+      // http://localhost:3000/api/products?search=Smartwatch
+
+if (req.query.search) {
+const FilterProducts =  products.filter(product=> product.name.includes(req.query.search))
+res.send(FilterProducts);
+return;
+} 
+  
+
+
       setTimeout(() => {
         res.send(products);
       }, 3000);
